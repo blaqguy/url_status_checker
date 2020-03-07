@@ -1,0 +1,95 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 7px 28px;
+  font-size: 10px;
+}
+
+/* Green */
+.success {
+  border-color: #4CAF50;
+  color: green;
+  float: right;
+}
+
+/* Red */
+.danger {
+  border-color: #f44336;
+  color: red;
+  float: right;
+}
+.down {
+  padding: 13px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 5px;
+  border-left: 6px solid red;
+}
+.up {
+  padding: 13px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 5px;
+  border-left: 6px solid green;
+}
+.header {
+  overflow: hidden;
+  background-color: #ffffff;
+  border-bottom: 20px solid white;
+}
+.header a {
+  color: black;
+  text-align: center;
+  font-size: 18px;
+}
+
+</style>
+<title>Status Page</title>
+</head>
+<body>
+
+<div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Status Page</h1>
+        </div>
+      </div>
+      <div class="row clearfix">
+          <div class="col-md-12 column">
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Aura Services Operational Status
+                    <small class="pull-right"><script> var date = document.lastModified; document.write("Last Refreshed: "+date); </script></small>
+                  </h3>
+                </div>                
+              </div>
+            
+              {% for url in bad_sites %}
+              <div class="down">
+                {{ url }} <button align="right" class="btn danger">Unreachable</button>
+              </div>
+              {% endfor %}
+              
+              {% for url in good_sites %}
+              <div class="up">
+              {{ url }} <button align="right" class="btn success">Operational</button>
+              </div>
+              {% endfor %}
+
+          </div>
+      </div>
+  </div>
+
+</body>
+</html>
